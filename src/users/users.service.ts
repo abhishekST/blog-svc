@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { ObjectId } from 'mongodb';
 
 // This should be a real class/interface representing a user entity
 export type User = any;
@@ -7,12 +8,12 @@ export type User = any;
 export class UsersService {
   private readonly users = [
     {
-      userId: 1,
+      userId: new ObjectId(),
       username: 'john',
       password: 'changeme',
     },
     {
-      userId: 2,
+      userId: new ObjectId(),
       username: 'maria',
       password: 'guess',
     },

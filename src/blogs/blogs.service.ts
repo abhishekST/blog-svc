@@ -14,7 +14,7 @@ export class BlogsService {
       ...postBlog,
       userId,
     };
-    const data = await this.blogModel.create(postBlog);
+    const data = await this.blogModel.create(postBlogData);
     return data;
   }
 }
