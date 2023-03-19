@@ -1,4 +1,5 @@
-import { IsDate, IsString } from 'class-validator';
+import { IsMongoId, IsString } from 'class-validator';
+import mongoose from 'mongoose';
 
 export class PostBlogDto {
   @IsString()
@@ -12,10 +13,4 @@ export class PostBlogDto {
 
   @IsString()
   description: string;
-
-  @IsDate()
-  published: string;
-
-  @IsString()
-  userId: string;
 }

@@ -17,7 +17,7 @@ export class Blog {
   @Prop({ required: true })
   description: string;
 
-  @Prop({ required: true })
+  @Prop({ required: false, default: new Date() })
   published: Date;
 
   @Prop({ required: true })
