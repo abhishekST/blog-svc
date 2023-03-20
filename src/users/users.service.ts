@@ -7,7 +7,7 @@ import { User, UserDocument } from './schema/user.schema';
 export class UsersService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
-  signup(email: string, password: string, name: string): Promise<User> {
+  create(email: string, password: string, name: string): Promise<User> {
     return this.userModel.create({ email, password, name });
   }
 
