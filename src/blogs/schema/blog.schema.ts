@@ -12,7 +12,7 @@ export class Blog {
   subtitle: string;
 
   @Prop({ required: true })
-  category: string;
+  category: [string];
 
   @Prop({ required: true })
   description: string;

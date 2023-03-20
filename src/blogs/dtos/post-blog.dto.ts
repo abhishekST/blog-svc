@@ -7,8 +7,8 @@ export class PostBlogDto {
   @IsString()
   subtitle: string;
 
-  @IsString()
-  category: string;
+  @IsString({ each: true })
+  category: [string];
 
   @IsString()
   description: string;

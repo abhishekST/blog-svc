@@ -9,12 +9,15 @@ import { Blog, BlogDocument } from './schema/blog.schema';
 export class BlogsService {
   constructor(@InjectModel(Blog.name) private blogModel: Model<BlogDocument>) {}
 
-  async postBlog(postBlog: PostBlogDto, userId: ObjectId) {
+  postBlog(postBlog: PostBlogDto, userId: ObjectId) {
     const postBlogData = {
       ...postBlog,
       userId,
     };
-    const data = await this.blogModel.create(postBlogData);
-    return data;
+    return this.blogModel.create(postBlogData);
+  }
+
+  getBlogList(categories: string[]): Promise<BlogDocument[]> {
+    return this.blogModel.find({ category: { $in: categories } });
   }
 }
