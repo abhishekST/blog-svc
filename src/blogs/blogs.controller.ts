@@ -7,6 +7,7 @@ import {
   Get,
   Query,
   ParseArrayPipe,
+  Param,
 } from '@nestjs/common';
 import { Serialize } from 'interceptors/serialize.interceptor';
 import { ObjectId } from 'mongodb';
@@ -29,7 +30,12 @@ export class BlogsController {
     @Query('categories', new ParseArrayPipe({ items: String }))
     categories: string[],
   ) {
-    console.log(categories[0]);
     return this.blogServices.getBlogList(categories);
+  }
+
+  @Get(':id')
+  async getBlog(@Param() id: string) {
+    await this.blogServices.updateViewOfBlog(id);
+    return this.blogServices.getBlog(id);
   }
 }

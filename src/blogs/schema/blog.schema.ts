@@ -22,6 +22,9 @@ export class Blog {
 
   @Prop({ required: true })
   userId: Types.ObjectId;
+
+  @Prop({ required: false, default: 0 })
+  view: number;
 }
 
 export const BlogSchema = SchemaFactory.createForClass(Blog);

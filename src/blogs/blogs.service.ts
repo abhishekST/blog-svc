@@ -20,4 +20,14 @@ export class BlogsService {
   getBlogList(categories: string[]): Promise<BlogDocument[]> {
     return this.blogModel.find({ category: { $in: categories } });
   }
+
+  getBlog(id: string) {
+    return this.blogModel.findById(new ObjectId(id));
+  }
+
+  updateViewOfBlog(id: string) {
+    return this.blogModel.findByIdAndUpdate(new ObjectId(id), {
+      $inc: { view: 1 },
+    });
+  }
 }
