@@ -17,8 +17,13 @@ export class BlogsService {
     return this.blogModel.create(postBlogData);
   }
 
-  getBlogList(categories: string[]): Promise<BlogDocument[]> {
-    return this.blogModel.find({ category: { $in: categories } });
+  getBlogList(categories: string[], view: number): Promise<BlogDocument[]> {
+    return this.blogModel
+      .find({
+        ...(categories?.length > 0 ? { category: { $in: categories } } : {}),
+        ...(view ? { view } : {}),
+      })
+      .populate('userId', { password: 0 });
   }
 
   getBlog(id: string) {

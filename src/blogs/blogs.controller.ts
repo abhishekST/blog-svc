@@ -27,10 +27,11 @@ export class BlogsController {
 
   @Get('/list')
   getBlogList(
-    @Query('categories', new ParseArrayPipe({ items: String }))
-    categories: string[],
+    @Query('categories', new ParseArrayPipe({ items: String, optional: true }))
+    categories?: string[],
+    @Query('view') view?: number,
   ) {
-    return this.blogServices.getBlogList(categories);
+    return this.blogServices.getBlogList(categories, view);
   }
 
   @Get(':id')
