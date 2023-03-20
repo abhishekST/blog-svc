@@ -22,7 +22,9 @@ export class BlogsService {
   }
 
   getBlog(id: string) {
-    return this.blogModel.findById(new ObjectId(id));
+    return this.blogModel
+      .findById(new ObjectId(id))
+      .populate('userId', { password: 0 });
   }
 
   updateViewOfBlog(id: string) {

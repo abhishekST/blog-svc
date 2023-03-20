@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 
@@ -13,6 +14,9 @@ export class User {
 
   @Prop({ required: true })
   password: string;
+
+  @Prop({ required: false, default: faker.image.avatar() })
+  img: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, Types } from 'mongoose';
 
@@ -20,11 +21,14 @@ export class Blog {
   @Prop({ required: false, default: new Date() })
   published: Date;
 
-  @Prop({ required: true })
+  @Prop({ required: true, ref: 'User' })
   userId: Types.ObjectId;
 
   @Prop({ required: false, default: 0 })
   view: number;
+
+  @Prop({ required: false, default: faker.image.business() })
+  img: string;
 }
 
 export const BlogSchema = SchemaFactory.createForClass(Blog);

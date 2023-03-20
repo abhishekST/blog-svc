@@ -34,8 +34,8 @@ export class AuthService {
   }
 
   async signup(email: string, password: string, name: string) {
-    const users = this.usersService.findOne(email);
-    if (!users) {
+    const users = await this.usersService.findOne(email);
+    if (users) {
       throw new BadRequestException('email in use');
     }
 
