@@ -1,5 +1,4 @@
-import { IsMongoId, IsString } from 'class-validator';
-import mongoose from 'mongoose';
+import { IsString } from 'class-validator';
 
 export class PostBlogDto {
   @IsString()
