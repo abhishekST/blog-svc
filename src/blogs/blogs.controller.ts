@@ -12,6 +12,7 @@ export class BlogsController {
   @UseGuards(JwtAuthGuard)
   @Post()
   async postBlog(@Request() req, @Body() body: PostBlogDto) {
-    return this.blogServices.postBlog(body, new ObjectId(req.user.id));
+    console.log(req.user);
+    return this.blogServices.postBlog(body, new ObjectId(req.user.userId));
   }
 }
